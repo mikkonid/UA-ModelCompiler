@@ -1,0 +1,521 @@
+<xs:schema
+  xmlns:Opc.Ua.DI="http://opcfoundation.org/UA/DI/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:ua="http://opcfoundation.org/UA/2008/02/Types.xsd"
+  xmlns:tns="http://opcfoundation.org/UA/AutoID/"
+  targetNamespace="http://opcfoundation.org/UA/AutoID/"
+  elementFormDefault="qualified"
+>
+  <xs:annotation>
+    <xs:appinfo>
+      <ua:Model ModelUri="http://opcfoundation.org/UA/AutoID/" Version="1.01" PublicationDate="2020-06-18T13:52:03Z" />
+    </xs:appinfo>
+  </xs:annotation>
+  
+  <xs:import namespace="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+  <xs:import namespace="http://opcfoundation.org/UA/DI/" />
+
+  <xs:simpleType  name="AutoIdOperationStatusEnumeration">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS_0" />
+      <xs:enumeration value="MISC_ERROR_TOTAL_1" />
+      <xs:enumeration value="MISC_ERROR_PARTIAL_2" />
+      <xs:enumeration value="PERMISSON_ERROR_3" />
+      <xs:enumeration value="PASSWORD_ERROR_4" />
+      <xs:enumeration value="REGION_NOT_FOUND_ERROR_5" />
+      <xs:enumeration value="OP_NOT_POSSIBLE_ERROR_6" />
+      <xs:enumeration value="OUT_OF_RANGE_ERROR_7" />
+      <xs:enumeration value="NO_IDENTIFIER_8" />
+      <xs:enumeration value="MULTIPLE_IDENTIFIERS_9" />
+      <xs:enumeration value="READ_ERROR_10" />
+      <xs:enumeration value="DECODING_ERROR_11" />
+      <xs:enumeration value="MATCH_ERROR_12" />
+      <xs:enumeration value="CODE_NOT_SUPPORTED_13" />
+      <xs:enumeration value="WRITE_ERROR_14" />
+      <xs:enumeration value="NOT_SUPPORTED_BY_DEVICE_15" />
+      <xs:enumeration value="NOT_SUPPORTED_BY_TAG_16" />
+      <xs:enumeration value="DEVICE_NOT_READY_17" />
+      <xs:enumeration value="INVALID_CONFIGURATION_18" />
+      <xs:enumeration value="RF_COMMUNICATION_ERROR_19" />
+      <xs:enumeration value="DEVICE_FAULT_20" />
+      <xs:enumeration value="TAG_HAS_LOW_BATTERY_21" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AutoIdOperationStatusEnumeration" type="tns:AutoIdOperationStatusEnumeration" />
+
+  <xs:complexType name="ListOfAutoIdOperationStatusEnumeration">
+    <xs:sequence>
+      <xs:element name="AutoIdOperationStatusEnumeration" type="tns:AutoIdOperationStatusEnumeration" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfAutoIdOperationStatusEnumeration" type="tns:ListOfAutoIdOperationStatusEnumeration" nillable="true"></xs:element>
+
+  <xs:simpleType  name="DeviceStatusEnumeration">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Idle_0" />
+      <xs:enumeration value="Error_1" />
+      <xs:enumeration value="Scanning_2" />
+      <xs:enumeration value="Busy_3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DeviceStatusEnumeration" type="tns:DeviceStatusEnumeration" />
+
+  <xs:complexType name="ListOfDeviceStatusEnumeration">
+    <xs:sequence>
+      <xs:element name="DeviceStatusEnumeration" type="tns:DeviceStatusEnumeration" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfDeviceStatusEnumeration" type="tns:ListOfDeviceStatusEnumeration" nillable="true"></xs:element>
+
+  <xs:simpleType  name="LocationTypeEnumeration">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NMEA_0" />
+      <xs:enumeration value="LOCAL_1" />
+      <xs:enumeration value="WGS84_2" />
+      <xs:enumeration value="NAME_3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LocationTypeEnumeration" type="tns:LocationTypeEnumeration" />
+
+  <xs:complexType name="ListOfLocationTypeEnumeration">
+    <xs:sequence>
+      <xs:element name="LocationTypeEnumeration" type="tns:LocationTypeEnumeration" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfLocationTypeEnumeration" type="tns:ListOfLocationTypeEnumeration" nillable="true"></xs:element>
+
+  <xs:simpleType  name="RfidLockOperationEnumeration">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Lock_0" />
+      <xs:enumeration value="Unlock_1" />
+      <xs:enumeration value="PermanentLock_2" />
+      <xs:enumeration value="PermanentUnlock_3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RfidLockOperationEnumeration" type="tns:RfidLockOperationEnumeration" />
+
+  <xs:complexType name="ListOfRfidLockOperationEnumeration">
+    <xs:sequence>
+      <xs:element name="RfidLockOperationEnumeration" type="tns:RfidLockOperationEnumeration" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfRfidLockOperationEnumeration" type="tns:ListOfRfidLockOperationEnumeration" nillable="true"></xs:element>
+
+  <xs:simpleType  name="RfidLockRegionEnumeration">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Kill_0" />
+      <xs:enumeration value="Access_1" />
+      <xs:enumeration value="EPC_2" />
+      <xs:enumeration value="TID_3" />
+      <xs:enumeration value="User_4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RfidLockRegionEnumeration" type="tns:RfidLockRegionEnumeration" />
+
+  <xs:complexType name="ListOfRfidLockRegionEnumeration">
+    <xs:sequence>
+      <xs:element name="RfidLockRegionEnumeration" type="tns:RfidLockRegionEnumeration" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfRfidLockRegionEnumeration" type="tns:ListOfRfidLockRegionEnumeration" nillable="true"></xs:element>
+
+  <xs:simpleType  name="RfidPasswordTypeEnumeration">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Access_0" />
+      <xs:enumeration value="Kill_1" />
+      <xs:enumeration value="Read_2" />
+      <xs:enumeration value="Write_3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RfidPasswordTypeEnumeration" type="tns:RfidPasswordTypeEnumeration" />
+
+  <xs:complexType name="ListOfRfidPasswordTypeEnumeration">
+    <xs:sequence>
+      <xs:element name="RfidPasswordTypeEnumeration" type="tns:RfidPasswordTypeEnumeration" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfRfidPasswordTypeEnumeration" type="tns:ListOfRfidPasswordTypeEnumeration" nillable="true"></xs:element>
+
+  <xs:element name="CodeTypeDataType" type="xs:string" />
+
+  <xs:element name="LocationName" type="xs:string" />
+
+  <xs:element name="NmeaCoordinateString" type="xs:string" />
+
+  <xs:complexType name="AccessResult">
+    <xs:annotation>
+      <xs:documentation>Result values of an AutoID Identifier access.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CodeType" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="Identifier" type="tns:ScanData" minOccurs="0" nillable="true" />
+      <xs:element name="Timestamp" type="xs:dateTime" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccessResult" type="tns:AccessResult" />
+
+  <xs:complexType name="ListOfAccessResult">
+    <xs:sequence>
+      <xs:element name="AccessResult" type="tns:AccessResult" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfAccessResult" type="tns:ListOfAccessResult" nillable="true"></xs:element>
+
+  <xs:complexType name="RfidAccessResult">
+    <xs:annotation>
+      <xs:documentation>Additional result values of an Rfid Transponder access.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AccessResult">
+        <xs:sequence>
+          <xs:element name="CodeTypeRWData" type="xs:string" minOccurs="0" nillable="true" />
+          <xs:element name="RWData" type="tns:ScanData" minOccurs="0" nillable="true" />
+          <xs:element name="Antenna" type="xs:int" minOccurs="0" />
+          <xs:element name="CurrentPowerLevel" type="xs:int" minOccurs="0" />
+          <xs:element name="PC" type="xs:unsignedShort" minOccurs="0" />
+          <xs:element name="Polarization" type="xs:string" minOccurs="0" nillable="true" />
+          <xs:element name="Strength" type="xs:int" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RfidAccessResult" type="tns:RfidAccessResult" />
+
+  <xs:complexType name="ListOfRfidAccessResult">
+    <xs:sequence>
+      <xs:element name="RfidAccessResult" type="tns:RfidAccessResult" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfRfidAccessResult" type="tns:ListOfRfidAccessResult" nillable="true"></xs:element>
+
+  <xs:complexType name="AntennaNameIdPair">
+    <xs:sequence>
+      <xs:element name="AntennaId" type="xs:int" minOccurs="0" />
+      <xs:element name="AntennaName" type="xs:string" minOccurs="0" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AntennaNameIdPair" type="tns:AntennaNameIdPair" />
+
+  <xs:complexType name="ListOfAntennaNameIdPair">
+    <xs:sequence>
+      <xs:element name="AntennaNameIdPair" type="tns:AntennaNameIdPair" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfAntennaNameIdPair" type="tns:ListOfAntennaNameIdPair" nillable="true"></xs:element>
+
+  <xs:complexType name="DhcpGeoConfCoordinate">
+    <xs:sequence>
+      <xs:element name="LaRes" type="xs:unsignedByte" minOccurs="0" />
+      <xs:element name="LatitudeInteger" type="xs:short" minOccurs="0" />
+      <xs:element name="LatitudeFraction" type="xs:int" minOccurs="0" />
+      <xs:element name="LoRes" type="xs:unsignedByte" minOccurs="0" />
+      <xs:element name="LongitudeInteger" type="xs:short" minOccurs="0" />
+      <xs:element name="LongitudeFraction" type="xs:int" minOccurs="0" />
+      <xs:element name="AT" type="xs:unsignedByte" minOccurs="0" />
+      <xs:element name="AltRes" type="xs:unsignedByte" minOccurs="0" />
+      <xs:element name="AltitudeInteger" type="xs:int" minOccurs="0" />
+      <xs:element name="AltitudeFraction" type="xs:short" minOccurs="0" />
+      <xs:element name="Datum" type="xs:unsignedByte" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DhcpGeoConfCoordinate" type="tns:DhcpGeoConfCoordinate" />
+
+  <xs:complexType name="ListOfDhcpGeoConfCoordinate">
+    <xs:sequence>
+      <xs:element name="DhcpGeoConfCoordinate" type="tns:DhcpGeoConfCoordinate" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfDhcpGeoConfCoordinate" type="tns:ListOfDhcpGeoConfCoordinate" nillable="true"></xs:element>
+
+  <xs:complexType name="LocalCoordinate">
+    <xs:sequence>
+      <xs:element name="X" type="xs:double" minOccurs="0" />
+      <xs:element name="Y" type="xs:double" minOccurs="0" />
+      <xs:element name="Z" type="xs:double" minOccurs="0" />
+      <xs:element name="Timestamp" type="xs:dateTime" minOccurs="0" />
+      <xs:element name="DilutionOfPrecision" type="xs:double" minOccurs="0" />
+      <xs:element name="UsefulPrecision" type="xs:int" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LocalCoordinate" type="tns:LocalCoordinate" />
+
+  <xs:complexType name="ListOfLocalCoordinate">
+    <xs:sequence>
+      <xs:element name="LocalCoordinate" type="tns:LocalCoordinate" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfLocalCoordinate" type="tns:ListOfLocalCoordinate" nillable="true"></xs:element>
+
+  <xs:complexType name="Position">
+    <xs:sequence>
+      <xs:element name="PositionX" type="xs:int" minOccurs="0" />
+      <xs:element name="PositionY" type="xs:int" minOccurs="0" />
+      <xs:element name="SizeX" type="xs:int" minOccurs="0" />
+      <xs:element name="SizeY" type="xs:int" minOccurs="0" />
+      <xs:element name="Rotation" type="xs:int" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Position" type="tns:Position" />
+
+  <xs:complexType name="ListOfPosition">
+    <xs:sequence>
+      <xs:element name="Position" type="tns:Position" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfPosition" type="tns:ListOfPosition" nillable="true"></xs:element>
+
+  <xs:complexType name="RfidSighting">
+    <xs:sequence>
+      <xs:element name="Antenna" type="xs:int" minOccurs="0" />
+      <xs:element name="Strength" type="xs:int" minOccurs="0" />
+      <xs:element name="Timestamp" type="xs:dateTime" minOccurs="0" />
+      <xs:element name="CurrentPowerLevel" type="xs:int" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RfidSighting" type="tns:RfidSighting" />
+
+  <xs:complexType name="ListOfRfidSighting">
+    <xs:sequence>
+      <xs:element name="RfidSighting" type="tns:RfidSighting" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfRfidSighting" type="tns:ListOfRfidSighting" nillable="true"></xs:element>
+
+  <xs:complexType name="Rotation">
+    <xs:sequence>
+      <xs:element name="Yaw" type="xs:double" minOccurs="0" />
+      <xs:element name="Pitch" type="xs:double" minOccurs="0" />
+      <xs:element name="Roll" type="xs:double" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Rotation" type="tns:Rotation" />
+
+  <xs:complexType name="ListOfRotation">
+    <xs:sequence>
+      <xs:element name="Rotation" type="tns:Rotation" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfRotation" type="tns:ListOfRotation" nillable="true"></xs:element>
+
+  <xs:complexType name="ScanDataEpc">
+    <xs:sequence>
+      <xs:element name="PC" type="xs:unsignedShort" minOccurs="0" />
+      <xs:element name="UId" type="xs:base64Binary" minOccurs="0" nillable="true" />
+      <xs:element name="XPC_W1" type="xs:unsignedShort" minOccurs="0" />
+      <xs:element name="XPC_W2" type="xs:unsignedShort" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScanDataEpc" type="tns:ScanDataEpc" />
+
+  <xs:complexType name="ListOfScanDataEpc">
+    <xs:sequence>
+      <xs:element name="ScanDataEpc" type="tns:ScanDataEpc" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfScanDataEpc" type="tns:ListOfScanDataEpc" nillable="true"></xs:element>
+
+  <xs:complexType name="ScanResult">
+    <xs:sequence>
+      <xs:element name="CodeType" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="ScanData" type="tns:ScanData" minOccurs="0" nillable="true" />
+      <xs:element name="Timestamp" type="xs:dateTime" minOccurs="0" />
+      <xs:element name="Location" type="tns:Location" minOccurs="0" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScanResult" type="tns:ScanResult" />
+
+  <xs:complexType name="ListOfScanResult">
+    <xs:sequence>
+      <xs:element name="ScanResult" type="tns:ScanResult" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfScanResult" type="tns:ListOfScanResult" nillable="true"></xs:element>
+
+  <xs:complexType name="OcrScanResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ScanResult">
+        <xs:sequence>
+          <xs:element name="ImageId" type="ua:NodeId" minOccurs="0" nillable="true" />
+          <xs:element name="Quality" type="xs:unsignedByte" minOccurs="0" />
+          <xs:element name="Position" type="tns:Position" minOccurs="0" nillable="true" />
+          <xs:element name="Font" type="xs:string" minOccurs="0" nillable="true" />
+          <xs:element name="DecodingTime" type="xs:dateTime" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OcrScanResult" type="tns:OcrScanResult" />
+
+  <xs:complexType name="ListOfOcrScanResult">
+    <xs:sequence>
+      <xs:element name="OcrScanResult" type="tns:OcrScanResult" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfOcrScanResult" type="tns:ListOfOcrScanResult" nillable="true"></xs:element>
+
+  <xs:complexType name="OpticalScanResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ScanResult">
+        <xs:sequence>
+          <xs:element name="Grade" type="xs:float" minOccurs="0" />
+          <xs:element name="Position" type="tns:Position" minOccurs="0" nillable="true" />
+          <xs:element name="Symbology" type="xs:string" minOccurs="0" nillable="true" />
+          <xs:element name="ImageId" type="ua:NodeId" minOccurs="0" nillable="true" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OpticalScanResult" type="tns:OpticalScanResult" />
+
+  <xs:complexType name="ListOfOpticalScanResult">
+    <xs:sequence>
+      <xs:element name="OpticalScanResult" type="tns:OpticalScanResult" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfOpticalScanResult" type="tns:ListOfOpticalScanResult" nillable="true"></xs:element>
+
+  <xs:complexType name="OpticalVerifierScanResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OpticalScanResult">
+        <xs:sequence>
+          <xs:element name="IsoGrade" type="xs:string" minOccurs="0" nillable="true" />
+          <xs:element name="RMin" type="xs:short" minOccurs="0" />
+          <xs:element name="SymbolContrast" type="xs:short" minOccurs="0" />
+          <xs:element name="ECMin" type="xs:short" minOccurs="0" />
+          <xs:element name="Modulation" type="xs:short" minOccurs="0" />
+          <xs:element name="Defects" type="xs:short" minOccurs="0" />
+          <xs:element name="Decodability" type="xs:short" minOccurs="0" />
+          <xs:element name="Decode_" type="xs:short" minOccurs="0" />
+          <xs:element name="PrintGain" type="xs:short" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OpticalVerifierScanResult" type="tns:OpticalVerifierScanResult" />
+
+  <xs:complexType name="ListOfOpticalVerifierScanResult">
+    <xs:sequence>
+      <xs:element name="OpticalVerifierScanResult" type="tns:OpticalVerifierScanResult" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfOpticalVerifierScanResult" type="tns:ListOfOpticalVerifierScanResult" nillable="true"></xs:element>
+
+  <xs:complexType name="RfidScanResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ScanResult">
+        <xs:sequence>
+          <xs:element name="Sighting" type="tns:ListOfRfidSighting" minOccurs="0" nillable="true" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RfidScanResult" type="tns:RfidScanResult" />
+
+  <xs:complexType name="ListOfRfidScanResult">
+    <xs:sequence>
+      <xs:element name="RfidScanResult" type="tns:RfidScanResult" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfRfidScanResult" type="tns:ListOfRfidScanResult" nillable="true"></xs:element>
+
+  <xs:complexType name="RtlsLocationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ScanResult">
+        <xs:sequence>
+          <xs:element name="Speed" type="xs:double" minOccurs="0" />
+          <xs:element name="Heading" type="xs:double" minOccurs="0" />
+          <xs:element name="Rotation" type="tns:Rotation" minOccurs="0" nillable="true" />
+          <xs:element name="ReceiveTime" type="xs:dateTime" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RtlsLocationResult" type="tns:RtlsLocationResult" />
+
+  <xs:complexType name="ListOfRtlsLocationResult">
+    <xs:sequence>
+      <xs:element name="RtlsLocationResult" type="tns:RtlsLocationResult" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfRtlsLocationResult" type="tns:ListOfRtlsLocationResult" nillable="true"></xs:element>
+
+  <xs:complexType name="ScanSettings">
+    <xs:sequence>
+      <xs:element name="Duration" type="xs:double" minOccurs="0" />
+      <xs:element name="Cycles" type="xs:int" minOccurs="0" />
+      <xs:element name="DataAvailable" type="xs:boolean" minOccurs="0" />
+      <xs:element name="LocationType" type="tns:LocationTypeEnumeration" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScanSettings" type="tns:ScanSettings" />
+
+  <xs:complexType name="ListOfScanSettings">
+    <xs:sequence>
+      <xs:element name="ScanSettings" type="tns:ScanSettings" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfScanSettings" type="tns:ListOfScanSettings" nillable="true"></xs:element>
+
+  <xs:complexType name="Location">
+    <xs:sequence>
+      <xs:element name="SwitchField" type="xs:unsignedInt" minOccurs="0" />
+      <xs:choice>
+        <xs:element name="NMEA" type="xs:string" minOccurs="0" nillable="true" />
+        <xs:element name="Local" type="tns:LocalCoordinate" minOccurs="0" nillable="true" />
+        <xs:element name="WGS84" type="tns:WGS84Coordinate" minOccurs="0" nillable="true" />
+        <xs:element name="Name" type="xs:string" minOccurs="0" nillable="true" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Location" type="tns:Location" />
+
+  <xs:complexType name="ListOfLocation">
+    <xs:sequence>
+      <xs:element name="Location" type="tns:Location" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfLocation" type="tns:ListOfLocation" nillable="true"></xs:element>
+
+  <xs:complexType name="ScanData">
+    <xs:sequence>
+      <xs:element name="SwitchField" type="xs:unsignedInt" minOccurs="0" />
+      <xs:choice>
+        <xs:element name="ByteString" type="xs:base64Binary" minOccurs="0" nillable="true" />
+        <xs:element name="String" type="xs:string" minOccurs="0" nillable="true" />
+        <xs:element name="Epc" type="tns:ScanDataEpc" minOccurs="0" nillable="true" />
+        <xs:element name="Custom" type="ua:Variant" minOccurs="0" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScanData" type="tns:ScanData" />
+
+  <xs:complexType name="ListOfScanData">
+    <xs:sequence>
+      <xs:element name="ScanData" type="tns:ScanData" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfScanData" type="tns:ListOfScanData" nillable="true"></xs:element>
+
+  <xs:complexType name="WGS84Coordinate">
+    <xs:sequence>
+      <xs:element name="N_S_Hemisphere" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="Latitude" type="xs:double" minOccurs="0" />
+      <xs:element name="E_W_Hemisphere" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="Longitude" type="xs:double" minOccurs="0" />
+      <xs:element name="Altitude" type="xs:double" minOccurs="0" />
+      <xs:element name="Timestamp" type="xs:dateTime" minOccurs="0" />
+      <xs:element name="DilutionOfPrecision" type="xs:double" minOccurs="0" />
+      <xs:element name="UsefulPrecisionLatLon" type="xs:int" minOccurs="0" />
+      <xs:element name="UsefulPrecisionAlt" type="xs:int" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WGS84Coordinate" type="tns:WGS84Coordinate" />
+
+  <xs:complexType name="ListOfWGS84Coordinate">
+    <xs:sequence>
+      <xs:element name="WGS84Coordinate" type="tns:WGS84Coordinate" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfWGS84Coordinate" type="tns:ListOfWGS84Coordinate" nillable="true"></xs:element>
+
+</xs:schema>
