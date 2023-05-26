@@ -1367,6 +1367,9 @@ namespace ModelCompiler
                             ns.FilePath = dependency.FilePath;
                         }
 
+                        // NID: Fix invalid dates in some nodesets
+                        if (ns.PublicationDate != null)
+                            ns.PublicationDate = ns.PublicationDate.Replace('.', ':');
                         DateTime? pd = (ns.PublicationDate != null) ? DateTime.Parse(ns.PublicationDate, null, DateTimeStyles.None) : null;
 
                         var requiredModel = new Export.ModelTableEntry()

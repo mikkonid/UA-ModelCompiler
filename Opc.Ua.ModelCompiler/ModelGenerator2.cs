@@ -2709,7 +2709,12 @@ namespace ModelCompiler
 
                         if (datatype.HasFields && datatype.Fields.Where(x => x.IsOptional).Count() > 0)
                         {
-                            return TemplatePath + "Version2.DataTypes.ClassWithOptionalFields.cs";
+                        	// NID: Fix AutoId nodeset2 compile
+                            if (datatype.BaseType == new XmlQualifiedName("Structure", DefaultNamespace) ||
+                                datatype.BaseType == new XmlQualifiedName("Union", DefaultNamespace))
+                            {
+                                return TemplatePath + "Version2.DataTypes.ClassWithOptionalFields.cs";
+                            }
                         }
 
                         if (GetBaseClassName(datatype) == "IEncodeable")
@@ -3519,7 +3524,18 @@ namespace ModelCompiler
 
             if (IsOverridden(instance))
             {
-                return null;
+            	// NID: Fix AutoId nodeset2 compile
+                VariableDesign field = context.Target as VariableDesign;
+                if (field == null)
+                {
+                    return null;
+                }
+
+                template.WriteNextLine(context.Prefix);
+                template.Write("private {0} {1};", GetClassName(GetMergedInstance(field)), GetChildFieldName(field));
+
+                return context.TemplatePath;
+                //return null;
             }
 
             if (instance.ModellingRule == ModellingRule.ExposesItsArray || instance.ModellingRule == ModellingRule.MandatoryPlaceholder || instance.ModellingRule == ModellingRule.OptionalPlaceholder)
@@ -4303,7 +4319,8 @@ namespace ModelCompiler
                     return null;
                 }
 
-                return TemplatePath + "Version2.PropertyOverride.cs";
+				// NID: Fix AutoId nodeset2 compile
+                //return TemplatePath + "Version2.PropertyOverride.cs";
             }
 
             if (IsBuiltInProperty(instance))
@@ -4887,9 +4904,19 @@ namespace ModelCompiler
                 return String.Empty;
             }
 
-            string name = String.Format("m_{0}{1}", field.Name.Substring(0, 1).ToLower(), field.Name.Substring(1));
+            if (field.Name.ToLower() == "lock")
+            {
+            	// NID: Fix AutoId nodeset2 compile, 'lock' is keyword in C#
+                string name = String.Format("m__{0}{1}", field.Name.Substring(0, 1).ToLower(), field.Name.Substring(1));
 
-            return name;
+                return name;
+            }
+            else
+            {
+                string name = String.Format("m_{0}{1}", field.Name.Substring(0, 1).ToLower(), field.Name.Substring(1));
+
+                return name;
+            }
         }
 
         /// <summary>

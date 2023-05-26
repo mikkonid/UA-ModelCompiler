@@ -4,6 +4,14 @@ namespace X {
 #if (!OPCUA_EXCLUDE__BrowseName_)
 /// <remarks />
 /// <exclude />
+// NID: Fix AutoId nodeset2 compile
+[Flags]
+public enum _ClassName_Fields : uint
+{   
+    None = 0,
+    // ListOfSwitchFields
+}
+
 [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
 [DataContract(Namespace = _XmlNamespaceUri_)]
 public partial class _BrowseName_ : _BaseType_
@@ -28,6 +36,11 @@ public partial class _BrowseName_ : _BaseType_
     #endregion
 
     #region Public Properties
+    // NID: Fix AutoId nodeset2 compile
+    // <remarks />
+    [DataMember(Name = "EncodingMask", IsRequired = true, Order = 0)]
+    public new _ClassName_Fields EncodingMask { get; set; }
+
     // ListOfProperties
     #endregion
 
